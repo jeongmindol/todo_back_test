@@ -17,6 +17,13 @@ from dotenv import load_dotenv
 load_dotenv()
 os.getenv("OPENAI_API_KEY")
 
+# 경로 추적을 위한 설정
+os.environ["PWD"] = os.getcwd()
+
+#출력의 인코딩을 utf-8로 설정한다
+sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding='utf-8')
+sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding='utf-8')
+
 # 커스텀 로더 클래스를 사용하여 개별 파일을 로드하면서 오류 처리 및 UTF-8 인코딩 적용
 # class SafeTextLoader(TextLoader):
 #     def lazy_load(self):
