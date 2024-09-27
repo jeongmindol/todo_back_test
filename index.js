@@ -15,7 +15,7 @@ app.post('/chat', (req, res) => {
   const sendQuestion = req.body.question;
   console.log(sendQuestion);
 
-  const execPython = path.join(__dirname, 'venv', 'aitest.py');
+  const execPython = path.join(__dirname, 'bizchat.py');
   const pythonPath = path.join(__dirname, 'venv', 'bin', 'python3');
   const net = spawn(pythonPath, [
     execPython,
