@@ -1,0 +1,5 @@
+.env
+.pyvenv.cfg
+/Lib
+/Scripts
+/data
