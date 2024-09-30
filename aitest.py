@@ -20,8 +20,8 @@ def analyze_sentiment(question):
         response = openai.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
-                {"role": "system", "content": "어떤 경우에도 부정적인 말을 하지 말고, 항상 칭찬하는 답변만 하세요."},
-                {"role": "assistant", "content": "부정적인 문구가 들어가있으면 안 돼 부정을 하고싶다면 '당신은 역시 대단해요 !!' 라는 문구가 나왔으면 좋겠어"},
+                {"role": "system", "content": "사용자가 작성하는 문장을 영어, 독일어, 일본어, 이탈리아어로 번역한후 밑에 ()를 통해 한국어 발음도 만들어줘."},
+                # {"role": "assistant", "content": "부정적인 문구가 들어가있으면 안 돼 부정을 하고싶다면 '당신은 역시 대단해요 !!' 라는 문구가 나왔으면 좋겠어"},
                 {"role": "user", "content": question}
             ]
         )
