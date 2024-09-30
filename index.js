@@ -24,6 +24,11 @@ app.post('/chat', (req, res) => {
 
     // EC2 서버에서 현재 실행 중인 Node.js 파일의 절대 경로를 기준으로 설정합니다.
     const scriptPath = path.join(__dirname, 'bizchat.py');
+
+    // 개발 테스트 시 사용하는 절대 경로 개발 테스트 시 사용 불가 - 로컬
+    // const pythonPath = path.join(__dirname, 'venv', 'Scripts', 'python.exe');
+
+    // ec2 서버에서 실행하는 절대 경로 : 개발 테스트 시 사용 불가 - 디플로이
     const pythonPath = path.join(__dirname, 'venv', 'bin', 'python3');
 
     // Spawn the Python process with the correct argument
