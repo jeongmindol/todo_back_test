@@ -20,7 +20,7 @@ def analyze_sentiment(question):
         response = openai.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
-                {"role": "system", "content": "사용자가 작성하는 단어가 포함된 영화를 추천 해주세요."},
+                {"role": "system", "content": "사용자가 작성하는 단어가 포함된 영화를 추천 해주고 추천한 이유를 설명해줘."},
                 # {"role": "assistant", "content": "부정적인 문구가 들어가있으면 안 돼 부정을 하고싶다면 '당신은 역시 대단해요 !!' 라는 문구가 나왔으면 좋겠어"},
                 {"role": "user", "content": question}
             ]
