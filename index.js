@@ -15,28 +15,27 @@ app.get('/', (req, res) => {
   res.send('Hello Wolrd https test completed');
 });
 
-app.post('/chat', (req, res) => {
-  const sendQuestion = req.body.question;
-  // console.log(sendQuestion);
+app.post('/weather', async (req, res) => {
+  const location = req.body.location;
 
+  // Python 스크립트와 가상 환경 경로 설정
   const execPython = path.join(__dirname, 'aitest.py');
   const pythonPath = path.join(__dirname, 'venv', 'bin', 'python3');
-  const result = spawn(pythonPath, [
-    execPython,
-    JSON.stringify({ question: sendQuestion }),
-  ]);
 
-  output = '';
+  // Python 스크립트를 실행
+  const result = spawn(pythonPath, [execPython, JSON.stringify({ location })]);
 
-  result.stdout.on('data', function (data) {
-    output += data.toString();
+  let output = '';
+
+  result.stdout.on('data', (data) => {
+    output += data.toString(); // Python 스크립트의 출력을 저장
   });
 
   result.on('close', (code) => {
     if (code === 0) {
-      res.status(200).json(JSON.parse(output));
+      res.status(200).json(JSON.parse(output)); // JSON 형식으로 클라이언트에 응답
     } else {
-      res.status(500).send('Something went wrong');
+      res.status(500).send('Something went wrong'); // 오류 처리
     }
   });
 });
