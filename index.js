@@ -12,7 +12,7 @@ app.use(cors()); //htpp, https 프로토콜을 사용하는 서버 간의 통신
 app.use(express.json()); // express 모듈의 json() 메소드를 사용한다.
 
 app.get('/', (req, res) => {
-  res.send('Hello Wolrd https test completed');
+  res.send('Hello Wolrd test completed');
 });
 
 app.post('/weather', async (req, res) => {
